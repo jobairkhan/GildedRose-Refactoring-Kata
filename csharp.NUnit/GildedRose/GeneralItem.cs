@@ -2,7 +2,7 @@
 
 public class GeneralItem : Item
 {
-    public override void Update()
+    public virtual void Update()
     {
         if (Quality > 0)
         {
