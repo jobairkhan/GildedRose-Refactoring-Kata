@@ -6,7 +6,7 @@ public class Item
     public int SellIn { get; set; }
     public int Quality { get; set; }
 
-    public void Update()
+    public virtual void Update()
     {
         if (IsAgedBrie())
         {
@@ -68,18 +68,23 @@ public class Item
         }
         else
         {
-            if (Quality > 0)
-            {
-                Quality -= 1;
-            }
+            GeneralItemUpdate();
+        }
+    }
 
-            SellIn -= 1;
+    private void GeneralItemUpdate()
+    {
+        if (Quality > 0)
+        {
+            Quality -= 1;
+        }
+
+        SellIn -= 1;
 
 
-            if (SellIn < 0 && Quality > 0)
-            {
-                Quality -= 1;
-            }
+        if (SellIn < 0 && Quality > 0)
+        {
+            Quality -= 1;
         }
     }
 
