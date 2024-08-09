@@ -15,7 +15,26 @@ public class GildedRose
     {
         foreach (var item in Items)
         {
-            item.Update();
+            Update(item);
+        }
+    }
+
+    private static void Update(Item item)
+    {
+        switch (item.Name)
+        {
+            case "Aged Brie":
+                item.AgedBrieItemUpdate();
+                break;
+            case "Backstage passes to a TAFKAL80ETC concert":
+                item.BackstagePassItemUpdate();
+                break;
+            case "Sulfuras, Hand of Ragnaros":
+                item.SulfurasUpdate();
+                break;
+            default:
+                item.GeneralItemUpdate();
+                break;
         }
     }
 }
