@@ -46,12 +46,12 @@ public class Item
                 {
                     if (Quality < 50)
                     {
-                        Quality = Quality + 1;
+                        Quality += 1;
                     }
                 }
             }
 
-            SellIn = SellIn - 1;
+            SellIn -= 1;
 
 
             if (SellIn < 0)
@@ -59,16 +59,20 @@ public class Item
                 Quality = 0;
             }
         }
+        else if (IsSulfuras())
+        {
+            if (Quality < 50)
+            {
+                Quality += 1;
+            }
+        }
         else
         {
             if (!IsAgedBrie() && !IsBackstagePasses())
             {
-                if (Quality > 0)
+                if (Quality > 0 && !IsSulfuras())
                 {
-                    if (Name != "Sulfuras, Hand of Ragnaros")
-                    {
-                        Quality = Quality - 1;
-                    }
+                    Quality -= 1;
                 }
             }
             else
@@ -76,25 +80,6 @@ public class Item
                 if (Quality < 50)
                 {
                     Quality = Quality + 1;
-
-                    if (Name == "Backstage passes to a TAFKAL80ETC concert")
-                    {
-                        if (SellIn < 11)
-                        {
-                            if (Quality < 50)
-                            {
-                                Quality = Quality + 1;
-                            }
-                        }
-
-                        if (SellIn < 6)
-                        {
-                            if (Quality < 50)
-                            {
-                                Quality = Quality + 1;
-                            }
-                        }
-                    }
                 }
             }
 
@@ -131,6 +116,11 @@ public class Item
                 }
             }
         }
+    }
+
+    private bool IsSulfuras()
+    {
+        return Name == "Sulfuras, Hand of Ragnaros";
     }
 
     private bool IsBackstagePasses()
