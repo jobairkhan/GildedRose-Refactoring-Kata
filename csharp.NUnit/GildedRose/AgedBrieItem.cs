@@ -1,22 +1,24 @@
 ﻿namespace GildedRoseKata;
 
-public class AgedBrieItem : Item
+public class AgedBrieItem : GeneralItem
 {
-    public virtual void Update()
+    public AgedBrieItem(Item theItem) : base(theItem) { }
+
+    public override void Update()
     {
-        if (Quality < 50)
+        if (TheItem.Quality < 50)
         {
-            Quality += 1;
+            TheItem.Quality += 1;
         }
 
-        SellIn -= 1;
+        TheItem.SellIn -= 1;
 
-        if (SellIn < 0)
+        if (TheItem.SellIn < 0)
         {
             {
-                if (Quality < 50)
+                if (TheItem.Quality < 50)
                 {
-                    Quality += 1;
+                    TheItem.Quality += 1;
                 }
             }
         }

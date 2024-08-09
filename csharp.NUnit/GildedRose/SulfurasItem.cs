@@ -1,12 +1,13 @@
 ﻿namespace GildedRoseKata;
 
-public class SulfurasItem : Item
+public class SulfurasItem : GeneralItem
 {
+    public SulfurasItem(Item item): base(item)
+    {
+        
+    }
+
     public override void Update()
     {
-        if (Quality < 50)
-        {
-            Quality += 1;
-        }
     }
 }

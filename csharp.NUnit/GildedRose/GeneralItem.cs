@@ -1,20 +1,27 @@
 ﻿namespace GildedRoseKata;
 
-public class GeneralItem : Item
+public class GeneralItem : IUpdateItem
 {
+    protected readonly Item TheItem;
+
+    public GeneralItem(Item theItem)
+    {
+        this.TheItem = theItem;
+    }
+
     public virtual void Update()
     {
-        if (Quality > 0)
+        if (TheItem.Quality > 0)
         {
-            Quality -= 1;
+            TheItem.Quality -= 1;
         }
 
-        SellIn -= 1;
+        TheItem.SellIn -= 1;
 
 
-        if (SellIn < 0 && Quality > 0)
+        if (TheItem.SellIn < 0 && TheItem.Quality > 0)
         {
-            Quality -= 1;
+            TheItem.Quality -= 1;
         }
     }
 }

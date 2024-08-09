@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace GildedRoseKata;
 
@@ -15,26 +16,39 @@ public class GildedRose
     {
         foreach (var item in Items)
         {
-            Update(item);
+            var temp = GetUpdatable(item);
+            temp.Update();
         }
     }
 
-    private static void Update(Item item)
+    private IUpdateItem GetUpdatable(Item item)
     {
-        switch (item.Name)
+        return item.Name switch
         {
-            case "Aged Brie":
-                item.AgedBrieItemUpdate();
-                break;
-            case "Backstage passes to a TAFKAL80ETC concert":
-                item.BackstagePassItemUpdate();
-                break;
-            case "Sulfuras, Hand of Ragnaros":
-                item.SulfurasUpdate();
-                break;
-            default:
-                item.GeneralItemUpdate();
-                break;
-        }
+            "Aged Brie" => new AgedBrieItem(item),
+            "Backstage passes to a TAFKAL80ETC concert" => new BackstagePassItem(item),
+            "Sulfuras, Hand of Ragnaros" => new SulfurasItem(item),
+            _ => new GeneralItem(item),
+        };
     }
+
+    //private static void Update(Item item)
+    //{
+    //    switch (item.Name)
+    //    {
+    //        case "Aged Brie":
+    //            item.AgedBrieItemUpdate();
+    //            break;
+    //        case "Backstage passes to a TAFKAL80ETC concert":
+    //            item.BackstagePassItemUpdate();
+    //            break;
+    //        case "Sulfuras, Hand of Ragnaros":
+    //            item.SulfurasUpdate();
+    //            break;
+    //        default:
+    //            item.GeneralItemUpdate();
+    //            break;
+    //    }
+    //}
+
 }

@@ -1,37 +1,42 @@
 ﻿namespace GildedRoseKata;
 
-public class BackstagePassItem : Item
+public class BackstagePassItem : GeneralItem
 {
+    public BackstagePassItem(Item item) : base(item)
+    {
+
+    }
+
     public override void Update()
     {
-        if (Quality < 50)
+        if (TheItem.Quality < 50)
         {
-            Quality += 1;
+            TheItem.Quality += 1;
 
 
-            if (SellIn < 11)
+            if (TheItem.SellIn < 11)
             {
-                if (Quality < 50)
+                if (TheItem.Quality < 50)
                 {
-                    Quality += 1;
+                    TheItem.Quality += 1;
                 }
             }
 
-            if (SellIn < 6)
+            if (TheItem.SellIn < 6)
             {
-                if (Quality < 50)
+                if (TheItem.Quality < 50)
                 {
-                    Quality += 1;
+                    TheItem.Quality += 1;
                 }
             }
         }
 
-        SellIn -= 1;
+        TheItem.SellIn -= 1;
 
 
-        if (SellIn < 0)
+        if (TheItem.SellIn < 0)
         {
-            Quality = 0;
+            TheItem.Quality = 0;
         }
     }
 }
