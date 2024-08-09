@@ -6,21 +6,21 @@ public class AgedBrieItem : GeneralItem
 
     public override void Update()
     {
-        if (TheItem.Quality < 50)
-        {
-            TheItem.Quality += 1;
-        }
+        IncreaseQuality();
 
         TheItem.SellIn -= 1;
 
         if (TheItem.SellIn < 0)
         {
-            {
-                if (TheItem.Quality < 50)
-                {
-                    TheItem.Quality += 1;
-                }
-            }
+            IncreaseQuality();
+        }
+    }
+
+    private void IncreaseQuality()
+    {
+        if (TheItem.Quality < 50)
+        {
+            TheItem.Quality += 1;
         }
     }
 }

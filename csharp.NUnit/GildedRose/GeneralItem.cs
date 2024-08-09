@@ -11,15 +11,14 @@ public class GeneralItem : IUpdateItem
 
     public virtual void Update()
     {
-        if (TheItem.Quality > 0)
+        TheItem.SellIn -= 1;
+        
+        if (TheItem.SellIn < 0 && TheItem.Quality > 0)
         {
             TheItem.Quality -= 1;
         }
-
-        TheItem.SellIn -= 1;
-
-
-        if (TheItem.SellIn < 0 && TheItem.Quality > 0)
+        
+        if (TheItem.Quality > 0)
         {
             TheItem.Quality -= 1;
         }

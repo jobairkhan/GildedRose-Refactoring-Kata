@@ -16,8 +16,7 @@ public class GildedRose
     {
         foreach (var item in Items)
         {
-            var temp = GetUpdatable(item);
-            temp.Update();
+            GetUpdatable(item).Update();
         }
     }
 
