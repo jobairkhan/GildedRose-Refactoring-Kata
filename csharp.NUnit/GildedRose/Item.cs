@@ -17,7 +17,6 @@ public class Item
 
             SellIn -= 1;
 
-
             if (SellIn < 0)
             {
                 {
@@ -26,6 +25,38 @@ public class Item
                         Quality += 1;
                     }
                 }
+            }
+        }
+        else if (IsBackstagePasses())
+        {
+            if (Quality < 50)
+            {
+                Quality += 1;
+
+
+                if (SellIn < 11)
+                {
+                    if (Quality < 50)
+                    {
+                        Quality += 1;
+                    }
+                }
+
+                if (SellIn < 6)
+                {
+                    if (Quality < 50)
+                    {
+                        Quality = Quality + 1;
+                    }
+                }
+            }
+
+            SellIn = SellIn - 1;
+
+
+            if (SellIn < 0)
+            {
+                Quality = 0;
             }
         }
         else
